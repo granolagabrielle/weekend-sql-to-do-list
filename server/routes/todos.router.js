@@ -32,7 +32,21 @@ router.post('/', (req, res) => {
 });
 
 // PUT to update item as completed
+// router.put('/', (req, res) => {
+
+// })
 
 // DELETE to delete item from database
+router.delete('/:todoid', (req, res) => {
+  console.log('req.params', req.params);
+  const queryText = `DELETE from "todos" WHERE id=$1`;
+  pool
+    .query(queryText, [req.params.todoid])
+    .then(() => res.sendStatus(204))
+    .catch((error) => {
+      console.error(`ERROR deleting item from server: `, error);
+      res.status(500).send(error);
+    });
+});
 
 module.exports = router;
