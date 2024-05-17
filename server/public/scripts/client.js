@@ -1,17 +1,33 @@
 console.log('JS is sourced!');
-// fetchItems();
+fetchItems();
 
 // GET
 function fetchItems() {
   axios.get('/todos').then((response) => {
     console.log('GET /todos response', response);
-    // appendItemsToDom(response.data);
+    appendItemsToDom(response.data);
   });
 }
 
 // function to append items to DOM
+function appendItemsToDom(itemList) {
+  let itemTableBody = document.getElementById('toDoList');
+  itemTableBody.innerHTML = '';
+  for (let item of itemList) {
+    itemTableBody.innerHTML += `
+        <tr>
+            <td><button>Complete</button></td>
+            <td>${item.text}</td>
+            <td><button id="deleteButton" data-testid="deleteButton" onclick="deleteItem(${item.id})">Delete</button></td>
+        <tr>    
+            `;
+  }
+}
 
 // function to clear form
+function clearForm() {
+  document.getElementById('toDoItem').value = '';
+}
 
 // POST
 function postItem(event) {
@@ -23,8 +39,8 @@ function postItem(event) {
     .post('/todos', payloadObject)
     .then((response) => {
       console.log('item added to server!');
-      //clearForm();
-      //fetchItems();
+      clearForm();
+      fetchItems();
     })
     .catch((error) => {
       console.log('Error', error);
@@ -33,12 +49,16 @@ function postItem(event) {
 }
 
 // PUT
-// function markCompleted
+// function markCompleted(event) {
+//     console.log(event.target.dataset);
+//     const itemid = event.target.closest('td')
+// }
 
 // DELETE
-function deleteItem(toDoId) {
+function deleteItem(todoid) {
+  console.log('delete button clicked');
   axios
-    .delete(`/songs/${toDoId}`)
+    .delete(`/todos/${todoid}`)
     .then((response) => {
       fetchItems();
     })

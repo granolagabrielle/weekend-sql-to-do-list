@@ -47,9 +47,10 @@ router.put('/:todoid', (req, res) => {
 // DELETE to delete item from database
 router.delete('/:todoid', (req, res) => {
   console.log('req.params', req.params);
+  const todoid = req.params.todoid;
   const queryText = `DELETE from "todos" WHERE id=$1`;
   pool
-    .query(queryText, [req.params.todoid])
+    .query(queryText, [todoid])
     .then(() => res.sendStatus(204))
     .catch((error) => {
       console.error(`ERROR deleting item from server: `, error);

@@ -69,7 +69,7 @@ The tests **will not work** if you do not follow these steps.
          <article data-testid="toDoItem">...</article>
        ```
 4. Each to-do item's "delete" button must have:
-   - `data-testid="deleteButton"`
+   - `data-testid="deleteButton"` - DONE
    - This button must be a child of the element that has the `data-testid="toDoItem"` on it.
 5. Each to-do item's "mark complete" button must have:
    - `data-testid="completeButton"`
