@@ -36,4 +36,14 @@ function postItem(event) {
 // function markCompleted
 
 // DELETE
-// function deleteItem
+function deleteItem(toDoId) {
+  axios
+    .delete(`/songs/${toDoId}`)
+    .then((response) => {
+      fetchItems();
+    })
+    .catch((error) => {
+      console.log('Error deleting item on DOM', error);
+      alert('Error deleting item on DOM');
+    });
+}

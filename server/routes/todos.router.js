@@ -32,9 +32,17 @@ router.post('/', (req, res) => {
 });
 
 // PUT to update item as completed
-// router.put('/', (req, res) => {
-
-// })
+router.put('/:todoid', (req, res) => {
+  console.log('req.params', req.params);
+  const queryText = `UPDATE "todos" SET "isComplete"=true WHERE "id"=$1 RETURNING *;`;
+  pool
+    .query(queryText, [req.params.todoid])
+    .then((result) => res.send(result.rows[0]))
+    .catch((error) => {
+      console.error(`ERROR querying: `, error);
+      res.status(500).send(error);
+    });
+});
 
 // DELETE to delete item from database
 router.delete('/:todoid', (req, res) => {
