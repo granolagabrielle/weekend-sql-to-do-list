@@ -17,6 +17,19 @@ router.get('/', (req, res) => {
 });
 
 // POST to post new data to server
+router.post('/', (req, res) => {
+  console.log('req.body: ', req.body);
+  const queryText = `
+    INSERT INTO "todos" ("text")
+    VALUES ($1);`;
+  pool
+    .query(queryText, [req.body.text])
+    .then((result) => res.sendStatus(201))
+    .catch((error) => {
+      console.error(`ERROR posting data to server: `, error);
+      res.status(500).send(error);
+    });
+});
 
 // PUT to update item as completed
 

@@ -14,7 +14,23 @@ function fetchItems() {
 // function to clear form
 
 // POST
-// function postItem
+function postItem(event) {
+  event.preventDefault();
+  let payloadObject = {
+    text: document.getElementById('toDoItem').value,
+  };
+  axios
+    .post('/todos', payloadObject)
+    .then((response) => {
+      console.log('item added to server!');
+      //clearForm();
+      //fetchItems();
+    })
+    .catch((error) => {
+      console.log('Error', error);
+      alert('uh oh! item not added to list');
+    });
+}
 
 // PUT
 // function markCompleted

@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="./scripts/axios.js"></script>
-  <script src="./scripts/client.js"></script>
-  <title>SQL TO-DO List</title>
-</head>
-<body>
-  <header>
-    <h1>Gabrielle's CRUD SQL TO-DO List</h1>
-  </header>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./scripts/axios.js"></script>
+    <script src="./scripts/client.js"></script>
+    <title>SQL TO-DO List</title>
+  </head>
+  <body>
+    <header>
+      <h1>Gabrielle's CRUD SQL TO-DO List</h1>
+    </header>
+    <form onsubmit="postItem(event)">
+      <input id="toDoItem" data-testid="toDoTextInput" placeholder="to-do item" />
+      <button id="addItemButton" data-testid="submitButton">Add Item</button>
+    </form>
+    <section>
+      <h2>To Do List:</h2>
+      <ul id="toDoList"></ul>
+    </section>
+  </body>
 </html>
