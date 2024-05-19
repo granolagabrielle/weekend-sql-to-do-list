@@ -1,19 +1,58 @@
 header {
-  background-color: darkslategray;
+  background-color: lightsalmon;
   padding: 25px;
 }
 
-form {
-  background-color: darkslategray;
-  padding: 10px;
-  align-content: center;
-}
-
 section {
-  background-color: blanchedalmond;
-  padding: 10px;
+  background-color: lightgoldenrodyellow;
+  padding: 30px;
 }
 
 .completed {
-  background-color: lightgreen;
+  background-color: #d1ffbd;
+}
+
+#completeButton {
+  background-color: #d1ffbd;
+}
+
+#deleteButton {
+  background-color: tomato;
+}
+
+footer {
+  background-color: lightsalmon;
+  padding: 30px;
+}
+
+table {
+  width: 50%;
+  text-align: center;
+  border: 1px solid black;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.2em;
+  min-width: 3.5em;
+}
+thead {
+  background: lightsalmon;
+}
+tbody tr {
+  background: lightgoldenrodyellow;
+}
+
+form {
+  background-color: lightgoldenrodyellow;
+  padding-top: 0px;
+  padding-left: 30px;
+  padding-bottom: 30px;
 }

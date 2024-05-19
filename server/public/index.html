@@ -12,22 +12,24 @@
     <header>
       <h1>Gabrielle's TO-DO List</h1>
     </header>
-    <form onsubmit="postItem(event)">
-      <input id="toDoItem" data-testid="toDoTextInput" placeholder="to-do item" />
-      <button id="addItemButton" data-testid="submitButton">Add Item</button>
-    </form>
     <section>
       <h2>To Do List:</h2>
       <table id="tableWrapper">
         <thead>
           <tr>
-            <th></th>
-            <th>Item to do</th>
-            <th>Delete</th>
+            <!-- <th>Priority</th> -->
+            <th>Tasks</th>
+            <th>Complete Task</th>
+            <th>Delete Task</th>
           </tr>
         </thead>
         <tbody id="toDoList"></tbody>
       </table>
     </section>
+    <form class="form" onsubmit="postItem(event)">
+      <input id="toDoItem" data-testid="toDoTextInput" placeholder="to-do item" />
+      <button id="addItemButton" data-testid="submitButton">Add Item</button>
+    </form>
+    <footer>footer</footer>
   </body>
 </html>
