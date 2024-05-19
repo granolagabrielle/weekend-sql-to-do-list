@@ -14,10 +14,11 @@ function appendItemsToDom(itemList) {
   let itemTableBody = document.getElementById('toDoList');
   itemTableBody.innerHTML = '';
   for (let item of itemList) {
+    const itemClass = item.isComplete ? 'completed' : 'incomplete';
     itemTableBody.innerHTML += `
-        <tr>
-            <td><button>Complete</button></td>
-            <td>${item.text}</td>
+        <tr data-todoid="${item.id}" data-testid="toDoItem" id="toDo" class="${itemClass}">
+            <td><button data-testid="completeButton" onclick="markCompleted(event)">Complete</button></td>
+            <td id="list-item">${item.text}</td>
             <td><button id="deleteButton" data-testid="deleteButton" onclick="deleteItem(${item.id})">Delete</button></td>
         <tr>    
             `;
@@ -29,7 +30,7 @@ function clearForm() {
   document.getElementById('toDoItem').value = '';
 }
 
-// POST
+// POST to add new item
 function postItem(event) {
   event.preventDefault();
   let payloadObject = {
@@ -49,10 +50,25 @@ function postItem(event) {
 }
 
 // PUT
-// function markCompleted(event) {
-//     console.log(event.target.dataset);
-//     const itemid = event.target.closest('td')
-// }
+function markCompleted(event) {
+  console.log('item marked as completed');
+  console.log(event.target.closest('tr').dataset);
+  const todoid = event.target.closest('tr').dataset.todoid;
+  axios({
+    method: 'PUT',
+    url: `/todos/${todoid}`,
+  })
+    .then((response) => {
+      const completedItem = document.getElementById('toDo');
+      completedItem.classList.remove('notCompleted');
+      completedItem.classList.add('completed');
+      fetchItems();
+    })
+    .catch((error) => {
+      console.log('error marking as completed', error);
+      alert('error marking as completed');
+    });
+}
 
 // DELETE
 function deleteItem(todoid) {

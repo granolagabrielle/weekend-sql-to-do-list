@@ -1,0 +1,19 @@
+header {
+  background-color: darkslategray;
+  padding: 25px;
+}
+
+form {
+  background-color: darkslategray;
+  padding: 10px;
+  align-content: center;
+}
+
+section {
+  background-color: blanchedalmond;
+  padding: 10px;
+}
+
+.completed {
+  background-color: lightgreen;
+}

@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// POST to post new data to server
+// POST to add new item to database
 router.post('/', (req, res) => {
   console.log('req.body: ', req.body);
   const queryText = `

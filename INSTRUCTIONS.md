@@ -60,7 +60,7 @@ The tests **will not work** if you do not follow these steps.
 - `data-testid="submitButton"` - DONE
 
 3. Each rendered to-do item must have:
-   - `data-testid="toDoItem"`
+   - `data-testid="toDoItem"` - DONE
    - It doesn't matter what HTML element you choose to use to represent a single to-do item, but it must have this attribute applied. Examples:
      - ```js
          <li data-testid="toDoItem">...</li>
@@ -70,12 +70,12 @@ The tests **will not work** if you do not follow these steps.
        ```
 4. Each to-do item's "delete" button must have:
    - `data-testid="deleteButton"` - DONE
-   - This button must be a child of the element that has the `data-testid="toDoItem"` on it.
+   - This button must be a child of the element that has the `data-testid="toDoItem"` on it. - DONE
 5. Each to-do item's "mark complete" button must have:
-   - `data-testid="completeButton"`
-   - This button must be a child of the element that has the `data-testid="toDoItem"` on it.
+   - `data-testid="completeButton"` - DONE
+   - This button must be a child of the element that has the `data-testid="toDoItem"` on it.-DONE
 6. Each completed to-do item must have:
-   - A CSS class of `completed` applied to its `data-testid="toDoItem"` element.
+   - A CSS class of `completed` applied to its `data-testid="toDoItem"` element. - DONE
    - Examples of "completed" to-do items:
      - ```js
          <li data-testid="toDoItem" class="completed">...</li>
