@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 
 // GET to grab data from server
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "todos" ORDER BY "isComplete"=true DESC;`;
+  const queryText = `SELECT * FROM "todos" ORDER BY "isComplete"=true ASC;`;
   pool
     .query(queryText)
     .then((result) => {
@@ -34,8 +34,7 @@ router.post('/', (req, res) => {
 // PUT to update item as completed
 router.put('/:todoid', (req, res) => {
   console.log('req.params', req.params);
-  const queryText = `UPDATE "todos" SET "isComplete"=true WHERE "id"=$1;`;
-  // `UPDATE "todos" SET "isComplete"=NOT "isComplete" WHERE "id"=$1;`
+  const queryText = `UPDATE "todos" SET "isComplete"=NOT "isComplete" WHERE "id"=$1;`;
   pool
     .query(queryText, [req.params.todoid])
     .then((result) => res.send(result.rows[0]))

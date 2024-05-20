@@ -20,8 +20,12 @@ function appendItemsToDom(itemList) {
     itemTableBody.innerHTML += `
         <tr data-todoid="${item.id}" data-testid="toDoItem" id="toDo" class="${itemClass}">
             <td id="list-item">${item.text}</td>
-            <td><button id="completeButton" data-testid="completeButton" onclick="markCompleted(event)">Complete</button></td>
-            <td><button id="deleteButton" data-testid="deleteButton" onclick="deleteItem(${item.id})">Delete</button></td>
+            <td><button id="completeButton" data-testid="completeButton" onclick="markCompleted(event)">${
+              item.isComplete ? '✅' : '◻️'
+            }</button></td>
+            <td><button id="deleteButton" data-testid="deleteButton" onclick="deleteItem(${
+              item.id
+            })">Delete</button></td>
         <tr>    
             `;
   }
