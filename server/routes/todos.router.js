@@ -35,11 +35,12 @@ router.post('/', (req, res) => {
 router.put('/:todoid', (req, res) => {
   console.log('req.params', req.params);
   const queryText = `UPDATE "todos" SET "isComplete"=true WHERE "id"=$1;`;
+  // `UPDATE "todos" SET "isComplete"=NOT "isComplete" WHERE "id"=$1;`
   pool
     .query(queryText, [req.params.todoid])
     .then((result) => res.send(result.rows[0]))
     .catch((error) => {
-      console.error(`ERROR querying: `, error);
+      console.error(`ERROR toggling: `, error);
       res.status(500).send(error);
     });
 });

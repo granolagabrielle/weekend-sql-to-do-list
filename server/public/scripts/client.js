@@ -1,5 +1,7 @@
-console.log('JS is sourced!');
-fetchItems();
+function onReady() {
+  console.log('JS is sourced!');
+  fetchItems();
+}
 
 // GET
 function fetchItems() {
@@ -83,3 +85,5 @@ function deleteItem(todoid) {
       alert('Error deleting item on DOM');
     });
 }
+
+onReady();
